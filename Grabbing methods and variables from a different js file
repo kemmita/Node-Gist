@@ -1,0 +1,24 @@
+1. Below is a file stored in a lib directory
+
+//We use module.exports and then append a name to create a function, var, obj, etc.
+module.exports.average = array => {
+  let sum = 0;
+  array.forEach((value) => {
+      sum += value;
+  });
+  return (sum / array.length).toFixed(2);
+};
+
+module.exports.grades = {
+    best: 97,
+    average: 56,
+};
+
+2. We will be in app.js below and will need to access the method and variable above.
+
+//Below we use require to fetch the methods and var
+const avgGrade = require('./lib/school').average;
+const grades = require('./lib/school').grades;
+
+console.log(avgGrade([70,55.321,90.2132,100]));
+console.log(grades);
