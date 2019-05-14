@@ -1,0 +1,7 @@
+1. to use the node modules we will need to require them, this is how we gain access to the power of Node is by requiring the modules
+needed.
+
+// fs "file system" will allow use to create files with one line of code.
+const fs = require('fs');
+
+fs.writeFileSync('notes.txt', 'This file was created by Node.js');
