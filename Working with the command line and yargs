@@ -1,0 +1,36 @@
+1. When using yargs we can create custom commands.
+
+//After installing yargs via npm, we must include it as a node module.
+const yargs = require('yargs');
+
+//Customize yargs version
+yargs.version('1.1.0');
+
+//Create custom yargs add command
+yargs.command({
+    command: 'add',
+    describe: '->Add a new note.',
+    //using builder we can specify argument to passed when they run the add command.
+    builder: {
+        title:{
+            describe: 'note title',
+            demandOption: true,
+            type: 'string',
+        },
+        body: {
+            describe: 'Overview of note',
+            demandOption: true,
+            type: 'string',
+        },
+    },
+    handler: (argv) =>{
+        console.log(` ${argv.title} added \n description: ${argv.body}`);
+    }
+});
+//This will display the results in the command line.
+yargs.parse();
+
+2. The command above will return this resul one this command is ran
+command: node app.js add --body="this is a note about food I need." --title="Shopping list."
+result: Shopping list. added
+        description: this is a note about food I need.
