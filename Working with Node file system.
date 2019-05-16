@@ -1,3 +1,4 @@
+**Section one**
 const fs = require('fs');
 
 // Here we create the file and apply some text.
@@ -5,3 +6,26 @@ fs.writeFileSync('notes.txt', 'This file was created by Node.js');
 
 // Here we append the text.
 fs.appendFileSync('notes.txt', '. I am now appending data to this file.');
+
+
+**Section two**
+
+//Below we create a book object
+const book = {
+  title: 'The Germanic Tribes',
+  author: 'Ausemove'
+};
+
+//Here we convert the js object to a json string, and give the file a name of 1-josn.josn that will be stored in the path we ware working
+in since we did not specify otherwise in the first param.
+fs.writeFileSync(`1-json.json`, JSON.stringify(book));
+
+// Read binary data from the file
+const dataBuffer = fs.readFileSync('1-json.json');
+// convert binary to string
+const dataJSON = dataBuffer.toString();
+// convert string to json object.
+const data = JSON.parse(dataJSON);
+data.title = 'Hammy';
+console.log(data.title);
+fs.writeFileSync('1-json.json', JSON.stringify(data));
