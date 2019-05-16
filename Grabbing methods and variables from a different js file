@@ -1,24 +1,19 @@
-1. Below is a file stored in a lib directory
+1. In this file we will create functions that will be used in a different js file.
 
-//We use module.exports and then append a name to create a function, var, obj, etc.
-module.exports.average = array => {
-  let sum = 0;
-  array.forEach((value) => {
-      sum += value;
-  });
-  return (sum / array.length).toFixed(2);
+const getNotes = () => {
+  return 'Static Note method for my example.';
 };
 
-module.exports.grades = {
-    best: 97,
-    average: 56,
+const addNote = (title, body) =>{
+
+};
+module.exports = {
+    getNotes: getNotes,
+    addNote: addNote
 };
 
-2. We will be in app.js below and will need to access the method and variable above.
 
-//Below we use require to fetch the methods and var
-const avgGrade = require('./lib/school').average;
-const grades = require('./lib/school').grades;
+2. In this file we need to require that file and then access the method we wish to use.
 
-console.log(avgGrade([70,55.321,90.2132,100]));
-console.log(grades);
+const notes = require('./notes');
+console.log(notes.getNotes());
