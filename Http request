@@ -1,0 +1,2 @@
+1. We will need npm, so run "npm init -y"
+2. Then run "npm i request@2.88.0"
