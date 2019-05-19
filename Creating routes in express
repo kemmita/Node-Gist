@@ -1,0 +1,9 @@
+1. GET request
+
+app.get('', (req, res) =>{
+    res.send('Hello Express!');
+});
+//specify the route name as the first param and then use the call back to process requests and responses.
+app.get('/help', (req, res) =>{
+   res.send('Help page son!');
+});
