@@ -1,0 +1,19 @@
+1. Run <npm init -y>
+2. Run <npm i express@4.16.4>
+3. Now we will need to set up our file to send a request and setup the server to listen
+
+// require express
+const express = require('express');
+
+// create a new instance of express.
+const app = express();
+
+// create a get request and on the callback use the response param to rerturn a string.
+app.get('', (req, res) =>{
+    res.send('Hello Express!');
+});
+
+// this will allow your server to run and you will want to viit it on http://localhost:3000 after running command <node your.js>
+app.listen(3000, () => {
+    console.log('server up in 3000');
+});
