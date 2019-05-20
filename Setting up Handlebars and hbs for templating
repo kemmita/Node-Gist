@@ -1,0 +1,68 @@
+1. Run <npm i hbs@4.0.1>
+2. In your main server file, make sure to use line 10.
+
+const express = require('express');
+const app = express();
+app.listen(3000, () => {
+    console.log('server up in 3000');
+});
+
+app.set('view engine', 'hbs');
+
+3. In your main directory create a new directory titled views.
+4. If you want to create a view you will create a file titled example.hbs the code that goes inside is just normal html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hello Handlebars</h1>
+</body>
+</html>
+
+5. now back in your main server/route file, create your route and use render to render the correct file.
+const express = require('express');
+const app = express();
+app.listen(3000, () => {
+    console.log('server up in 3000');
+});
+
+
+const path = require('path');
+app.use(express.static(path.join(__dirname, '../public')));
+
+app.set('view engine', 'hbs');
+
+
+app.get('/weather', (req, res) =>{
+    res.send('Your Weather!');
+});
+
+app.get('', (reg, res) =>{
+    res.render('index');
+});
+
+6. If we want to render dynamic data we can send json data as a second paramter
+app.get('', (reg, res) =>{
+    res.render('index', {
+        title: 'Weather Application'
+    });
+});
+
+// If we want to access title and print the value of titile in the file, we can use the handlebar syntax as seen on line 64.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>Weather Heather</h1>
+<h2>{{title}}</h2>
+<img src="img/robot.png" alt="Robert the Robot">
+<script src="js/app.js"></script>
+</body>
+</html>
