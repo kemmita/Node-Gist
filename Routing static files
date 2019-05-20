@@ -1,0 +1,19 @@
+1. We can route static files without declaring routes, this is beacuse json data is not being passed to the page.
+
+//Create server
+const express = require('express');
+const app = express();
+//set port
+app.listen(3000, () => {
+    console.log('server up in 3000');
+});
+
+//Inlcude the path module from node.
+const path = require('path');
+//this is routed to a public directory, any file in their can be served in the broswer if the file name is specified.
+app.use(express.static(path.join(__dirname, '../public')));
+
+//Here is how we would get to the help.html page from the route above
+//inside public we have a file named help.html
+http://localhost:3000/help.html
+
