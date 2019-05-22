@@ -1,0 +1,4 @@
+select top(5) LEFT(EmployeeLastName,1) as first_initial, 
+count(*) as countOfInitial from tblEmployee 
+group by LEFT(EmployeeLastName,1)
+order by countOfInitial desc
