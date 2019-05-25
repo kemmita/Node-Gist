@@ -1,0 +1,27 @@
+1. Ensure that the mongodb server is running before taking the steps below.
+2. run command <npm init y>
+3. run command <npm i mongodb@3.1.10>
+4. Create a js file in your root directory and paste in the code below.
+
+const mongodb = require('mongodb');
+const MongoClient = mongodb.MongoClient;
+
+//Derclare conection url
+const connectionUrl = 'mongodb://127.0.0.1:27017';
+//define database name
+const databaseName = 'task-manager';
+
+//Here we create the conncetion using mongo client.
+MongoClient.connect(connectionUrl, {useNewUrlParser: true}, (error, client) =>{
+    if (error){
+        return console.log('Unable to connect to database');
+    }
+    //Below we use code first convention, this will create a new database for us in the db
+    const db = client.db(databaseName);
+    
+    //This will create a new collection/table for use called users in the new database. at the same time we are inserting our first user.
+    db.collection('users').insertOne({
+            name: 'Russell',
+             age: 29
+    });
+});
