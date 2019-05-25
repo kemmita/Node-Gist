@@ -1,0 +1,31 @@
+1. Below we will fetch a single user using their name
+
+  const db = client.db(databaseName);
+  // below we search the table of users for a user with the name 'Russell'
+    db.collection('users').findOne({name: 'Russell'}, (error, user) =>{
+       if (error){
+          return  console.log('Unable to fetch data.');
+       }
+       console.log(user.name);
+    });
+    
+2. Now we want to find the same user, but by using their mongo assigned object id
+
+    const db = client.db(databaseName);
+    // Notice the new ObkjectID function that is needed.
+    db.collection('users').findOne({_id: new ObjectID("5ce9c519e67a6d0bfcf59c74")}, (error, user) =>{
+       if (error){
+          return  console.log('Unable to fetch data.');
+       }
+       console.log(user.name);
+    });
+    
+ 3. Now we will pull several users at once.
+  
+    //This will find all users with an age of 29
+     db.collection('users').find({age: 29}).toArray((error, users) =>{
+       if (error){
+           return console.log(error);
+       }
+        console.log(users);
+    });
