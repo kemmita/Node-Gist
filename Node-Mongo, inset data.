@@ -1,0 +1,30 @@
+1. Insert a single collection
+
+  const db = client.db(databaseName);
+    db.collection('users').insertOne({
+            name: 'Andrew',
+             age: 30
+    }, (error, result) =>{
+        if (error){
+            return console.log('unable to insert data.');
+        }
+        console.log(result.ops);
+    });
+    
+2. Insert several collections at once.
+
+    db.collection('users').insertMany([
+        {
+            name: 'Kevin',
+            age: 45
+        },
+        {
+            name: 'Rachel',
+            age: 31
+        }
+    ], (error, result) =>{
+        if (error){
+            return console.log('no data inserted');
+        }
+        console.log(result.ops);
+    });
