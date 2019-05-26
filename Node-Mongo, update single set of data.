@@ -1,0 +1,15 @@
+1. To update one collection, use the mongoDB method, updateOne
+
+   const db = client.db(databaseName);
+    db.collection('users').updateOne({
+        _id: new ObjectID("5ce9c435701f5e35c47da9a5")
+    }, {
+        $set: {
+            name: 'SarahB',
+            age: 20
+        }
+    }).then((result) =>{
+        console.log(result);
+    }).catch((error) =>{
+        console.log(error);
+    });
