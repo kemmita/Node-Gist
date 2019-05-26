@@ -1,0 +1,14 @@
+const db = client.db(databaseName);
+//The first object passed tells mongo to locate all of the collections with a completed value of false.
+    db.collection('tasks').updateMany({
+            completed: false
+    }, {
+    // The second objecy passed is to set all collections found with a completed value of true.
+        $set: {
+            completed: true
+        }
+    }).then((response) =>{
+        console.log(`it worked ${response}`);
+    }).catch((error) =>{
+        console.log(error);
+    });
