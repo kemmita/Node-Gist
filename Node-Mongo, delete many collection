@@ -1,0 +1,8 @@
+    const db = client.db(databaseName);
+    db.collection('tasks').deleteMany({
+        completed: true
+    }).then((response) =>{
+        console.log(response);
+    }).catch((error) =>{
+        console.log(error);
+    });
