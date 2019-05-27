@@ -1,0 +1,35 @@
+1. This should all be done after installing and configuring mongodb.
+2. In the root, run command <npm i mongoose@5.3.16>
+3. Create a mongoose.js file
+
+//Require mongoose form npm
+const mongoose = require('mongoose');
+
+//connect to monogodb "task-manager-api" is defiined by me and will be the name of the db.
+mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api', {
+    useNewUrlParser: true,
+    useCreateIndex: true
+});
+
+// Here we create a User model wich will act as a new collection with two fields.
+const User = mongoose.model('User', {
+   name: {
+       type: String
+   } ,
+    age: {
+       type: Number
+    }
+});
+
+// use the constructor function of the model above to create a new user.
+const userOne = new User({
+   name: 'Russell',
+   age: 'astve'
+});
+
+// we then use the mongoose save method.
+userOne.save().then((response) =>{
+    console.log('User added',response);
+}).catch(() =>{
+    console.log('Error',error);
+});
